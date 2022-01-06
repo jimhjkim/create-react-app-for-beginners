@@ -3,8 +3,10 @@ import styles from "./App.module.css";
 import { useState, useEffect } from "react";
 
 function App() {
+  const [showing, setShowing] = useState(false);
   const [counter, setCounter] = useState(0);
   const [keyword, setKeyword] = useState("");
+  const onShowingClick = () => setShowing(prev => !prev);
   const onClick = () => setCounter(prev => prev + 1);
   const onChange = (event) => setKeyword(event.target.value);
 
@@ -16,6 +18,7 @@ function App() {
 
   return (
     <div>
+      <button onClick={onShowingClick}>{showing ? "Hide" : "Show"}</button>
       <input 
         value={keyword}
         onChange={onChange}
