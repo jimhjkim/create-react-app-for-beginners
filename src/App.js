@@ -2,6 +2,14 @@ import Button from "./Button";
 import styles from "./App.module.css";
 import { useState, useEffect } from "react";
 
+function Hello() {
+  useEffect(() => {
+    console.log("hi ^_^");
+    return () => console.log("bye ^_^");
+  }, [])
+  return <h1>Hello</h1>;
+}
+
 function App() {
   const [showing, setShowing] = useState(false);
   const [counter, setCounter] = useState(0);
@@ -18,6 +26,7 @@ function App() {
 
   return (
     <div>
+      {showing ? <Hello /> : null}
       <button onClick={onShowingClick}>{showing ? "Hide" : "Show"}</button>
       <input 
         value={keyword}
